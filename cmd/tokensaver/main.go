@@ -14,8 +14,8 @@ import (
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 
-	"github.com/use-tokesaver/tokensaver/internal/server"
-	"github.com/use-tokesaver/tokensaver/internal/telemetry"
+	"github.com/use-tokensaver/tokensaver/internal/server"
+	"github.com/use-tokensaver/tokensaver/internal/telemetry"
 )
 
 // version is set at build time with -ldflags "-X main.version=v1.2.3"; `go

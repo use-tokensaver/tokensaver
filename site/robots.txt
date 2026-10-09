@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /prototype/
 
-Sitemap: https://use-tokesaver.github.io/tokensaver/sitemap.xml
+Sitemap: https://use-tokensaver.github.io/tokensaver/sitemap.xml

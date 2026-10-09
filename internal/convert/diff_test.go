@@ -3,7 +3,7 @@ package convert
 import (
 	"testing"
 
-	"github.com/use-tokesaver/tokensaver/internal/view"
+	"github.com/use-tokensaver/tokensaver/internal/view"
 )
 
 const twoFileDiff = `diff --git a/internal/greet.go b/internal/greet.go

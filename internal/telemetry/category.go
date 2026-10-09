@@ -8,7 +8,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/use-tokesaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/source"
 )
 
 // ErrorCategory is a small closed set of coarse failure reasons. Tool errors

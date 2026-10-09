@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/use-tokesaver/tokensaver/internal/testdoc"
+	"github.com/use-tokensaver/tokensaver/internal/testdoc"
 )
 
 // The test site imitates what agents actually fetch: a docs page wrapped in the

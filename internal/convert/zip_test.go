@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/use-tokesaver/tokensaver/internal/source"
-	"github.com/use-tokesaver/tokensaver/internal/testdoc"
+	"github.com/use-tokensaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/testdoc"
 )
 
 func TestZIPOutline(t *testing.T) {

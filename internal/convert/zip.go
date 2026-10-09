@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/use-tokesaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/source"
 )
 
 const (

@@ -17,7 +17,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/use-tokesaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/source"
 )
 
 // TestDisabledByDefault confirms that with no configuration (the default),

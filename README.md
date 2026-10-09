@@ -64,16 +64,16 @@ surrounding context.
 ## Install
 
 ```bash
-brew tap use-tokesaver/tokensaver
+brew tap use-tokensaver/tokensaver
 brew install tokensaver
 ```
 
 macOS and Linux, Intel and ARM — a prebuilt binary, no Go toolchain needed.
 Homebrew 7 refuses to load non-official taps until you trust them, so if it
-complains, run `brew trust use-tokesaver/tokensaver` and install again.
+complains, run `brew trust use-tokensaver/tokensaver` and install again.
 
 On Windows, or not using Homebrew? Download an archive from
-[Releases](https://github.com/use-tokesaver/tokensaver/releases) and put the
+[Releases](https://github.com/use-tokensaver/tokensaver/releases) and put the
 binary on your `PATH`.
 
 Optional: Chrome, Chromium, Brave or Edge installed in the usual place (or
@@ -125,7 +125,7 @@ Reviewing a pull request without the diff eating your context — a PR URL is fe
 as its diff automatically, collapsed to the changed hunks:
 
 ```text
-read https://github.com/use-tokesaver/tokensaver/pull/16 with tokensaver
+read https://github.com/use-tokensaver/tokensaver/pull/16 with tokensaver
 ```
 
 Getting oriented in an unfamiliar repo, without an `ls -R` dump:
@@ -355,7 +355,7 @@ landed it stops there, otherwise it tags and hands over to
 [GoReleaser](https://goreleaser.com) ([.goreleaser.yaml](.goreleaser.yaml)), which
 cross-compiles `cmd/tokensaver` for macOS, Linux and Windows (amd64 + arm64), publishes
 a GitHub Release with archives and checksums, and updates
-[use-tokesaver/homebrew-tokensaver](https://github.com/use-tokesaver/homebrew-tokensaver).
+[use-tokensaver/homebrew-tokensaver](https://github.com/use-tokensaver/homebrew-tokensaver).
 
 Pushing a `v*` tag by hand still works as an escape hatch. To dry-run the build locally
 without publishing: `goreleaser release --snapshot --clean --skip=publish`.
