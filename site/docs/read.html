@@ -60,7 +60,7 @@
       <tr><td><code>js</code></td><td>Render in headless Chrome first; happens automatically when a page looks empty</td></tr>
     </table>
 
-    <p>Supported: HTML/web pages, PDF, DOCX, XLSX, PPTX, JSON, diff/patch (including GitHub PR and commit URLs), local directories (as a tree), and any text file (Markdown, CSV, code, logs…).</p>
+    <p>Supported: HTML/web pages, PDF, DOCX, XLSX, PPTX, JSON, diff/patch (including GitHub PR and commit URLs), ZIP archives, log files, local directories (as a tree), and any other text file (Markdown, CSV, code…).</p>
 
     <h2>What it does per format</h2>
     <ul>
@@ -71,6 +71,8 @@
       <li><strong>PPTX</strong> — <code>## Slide N: Title</code>, bullets with nesting, tables, speaker notes; slide numbers/footers skipped.</li>
       <li><strong>Diffs/PRs</strong> — a GitHub PR or commit URL is fetched as its underlying diff automatically; local <code>.diff</code>/<code>.patch</code> files work the same way. One <code>## path (+N -M)</code> heading per changed file; whitespace-only hunks are dropped with a note.</li>
       <li><strong>Directories</strong> — a token-aware tree: the root <code>.gitignore</code> is respected, <code>.git</code> is always skipped, dependency directories collapse to one line, and any other directory with over 100 direct entries collapses to an item count. Files show their size.</li>
+      <li><strong>ZIP archives</strong> — each member converted by its own format (nested archives and binaries are listed with their size, not expanded), as <code>## path (size)</code> sections — so <code>outline</code>/<code>section</code> page through an archive like any other document.</li>
+      <li><strong>Log files</strong> — lines matching common error/failure patterns (<code>ERROR</code>, <code>FATAL</code>, stack traces, test failures…) plus a couple of lines of context around each; everything else collapses to an "N lines omitted" note.</li>
     </ul>
 
     <p>Paged output ends with a hint such as <code>[page 1 of 4 · next: page=2 · outline=true lists sections]</code>. When a table or code block is split across pages, the table header is repeated and the code fence is closed and reopened, so every page stands on its own.</p>

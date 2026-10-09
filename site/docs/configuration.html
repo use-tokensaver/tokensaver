@@ -54,10 +54,15 @@
       <tr><td><code>TOKENSAVER_MAX_CHARS</code></td><td>Default page size (default <code>20000</code>)</td></tr>
       <tr><td><code>TOKENSAVER_CHROME</code></td><td>Path to a Chrome/Chromium-family browser</td></tr>
       <tr><td><code>TOKENSAVER_LOG</code></td><td><code>debug</code>, <code>info</code> (default) or <code>warn</code>; logs go to stderr — one line per tool call with sizes and timings</td></tr>
+      <tr><td><code>TOKENSAVER_TELEMETRY</code></td><td><code>1</code> to opt in to anonymous usage telemetry (default off — nothing is sent)</td></tr>
+      <tr><td><code>TOKENSAVER_TELEMETRY_ENDPOINT</code></td><td>Collector URL; telemetry stays off (silently) if this is unset, since this repo runs no collector of its own</td></tr>
     </table>
 
     <h2>Freshness</h2>
     <p>A plain <code>read</code>/<code>read_json</code> always fetches the URL again (the page or API you are developing may have just changed). Follow-up calls — <code>page=2</code>, <code>section=</code>, <code>outline=</code> — reuse the result for up to 10 minutes, in memory only, so page numbers stay stable and big PDFs aren't re-parsed. Local files are re-read whenever they change.</p>
+
+    <h2>Telemetry</h2>
+    <p>Off by default, and off unless both telemetry variables above are set. When enabled, each <code>read</code>/<code>read_json</code> call reports which tool ran, a coarse source kind (<code>html</code>, <code>pdf</code>, …, <code>json</code>, <code>dir</code>), success or a closed-set error category, duration and output size — never a URL, file path, error text, or document content — tagged with a random install ID stored under your OS config dir (not derived from your machine or username). Sending is async and never delays a tool call; a slow or unreachable collector just drops the events.</p>
 
     <p>Next: <a href="security.html">Security notes</a>.</p>
   </main>
