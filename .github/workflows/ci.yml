@@ -31,3 +31,20 @@ jobs:
       # benchmark and the billed A/B harness are both opt-in, so nothing here reaches
       # the network or costs money.
       - run: go test ./...
+
+  # The Dockerfile has to keep building; the image is only pushed on release.
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          load: true
+          tags: tokensaver:ci
+          build-args: VERSION=ci
+
+      - run: docker run --rm tokensaver:ci -version | grep -qx ci

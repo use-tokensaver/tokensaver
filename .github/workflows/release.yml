@@ -11,6 +11,9 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.version.outputs.release }}
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -32,6 +35,7 @@ jobs:
         run: |
           if [ "${{ github.ref_type }}" = "tag" ]; then
             echo "release=true" >> "$GITHUB_OUTPUT"
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           go install github.com/caarlos0/svu/v3@latest
@@ -49,6 +53,7 @@ jobs:
           git tag -a "$next" -m "$next"
           git push origin "$next"
           echo "release=true" >> "$GITHUB_OUTPUT"
+          echo "version=${next#v}" >> "$GITHUB_OUTPUT"
 
       - uses: goreleaser/goreleaser-action@v7
         if: steps.version.outputs.release == 'true'
@@ -59,3 +64,41 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+
+  # Built from the tagged source, not from GoReleaser's binaries, and run even
+  # when the Homebrew step above failed: the two publishes don't depend on each
+  # other. Pure Go, so the arm64 image is cross-compiled, not emulated.
+  docker:
+    needs: release
+    if: ${{ !cancelled() && needs.release.outputs.release == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: v${{ needs.release.outputs.version }}
+
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          build-args: VERSION=${{ needs.release.outputs.version }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ needs.release.outputs.version }}
+            ghcr.io/${{ github.repository }}:latest
+
+      - name: Smoke test the pushed image
+        run: |
+          docker run --rm ghcr.io/${{ github.repository }}:${{ needs.release.outputs.version }} -version \
+            | grep -qx "${{ needs.release.outputs.version }}"
