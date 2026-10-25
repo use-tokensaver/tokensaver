@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>tokensaver intro — frames</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  /* One 1920x1080 frame per (scene, step). build.py screenshots each combination;
+     elements with data-from="N" appear once step >= N. Nord palette, like the site. */
+  :root { --bg:#2e3440; --panel:#3b4252; --heading:#eceff4; --text:#d8dee9; --muted:#9aa5b8;
+          --accent:#88c0d0; --accent2:#81a1c1; --green:#a3be8c; --line:rgba(216,222,233,.16); }
+  * { box-sizing: border-box; }
+  html, body { margin:0; width:1920px; height:1080px; overflow:hidden; }
+  body { background:var(--bg); color:var(--text); font-family:"JetBrains Mono",monospace;
+         background-image:radial-gradient(rgba(216,222,233,.08) 2px, transparent 2px); background-size:48px 48px; }
+  .scene { display:none; position:absolute; inset:0; padding:100px 160px 230px; flex-direction:column; justify-content:center; }
+  .scene.on { display:flex; }
+  [data-from] { visibility:hidden; }
+  [data-from].show { visibility:visible; }
+  .pixel { font-family:"Press Start 2P",monospace; line-height:1.3;
+           background:linear-gradient(180deg,var(--heading) 0%,var(--accent) 55%,var(--accent2) 100%);
+           -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .tagline { font-family:"Press Start 2P",monospace; font-size:40px; line-height:1.6; color:var(--heading); margin-top:48px; }
+  h2 { font-size:76px; line-height:1.15; margin:0; color:var(--heading); font-weight:700; }
+  .caption { position:absolute; left:160px; right:160px; bottom:64px; font-size:30px; line-height:1.5; color:var(--muted); }
+  .brand { position:absolute; left:160px; top:56px; font-size:26px; font-weight:700; color:var(--muted); letter-spacing:.04em; }
+  .brand b { color:var(--accent); }
+
+  /* scene 2 */
+  .stat { display:flex; align-items:baseline; gap:28px; margin-top:56px; }
+  .stat .num { font-size:200px; font-weight:700; color:var(--accent); line-height:1; }
+  .stat .unit { font-size:56px; color:var(--heading); }
+  .sub { font-size:34px; color:var(--muted); margin-top:28px; }
+
+  /* terminals */
+  .term { background:var(--panel); border:2px solid var(--line); border-radius:14px; overflow:hidden; }
+  .term .bar { display:flex; align-items:center; gap:12px; padding:18px 24px; border-bottom:2px solid var(--line); color:var(--muted); font-size:24px; }
+  .term .bar i { width:18px; height:18px; border-radius:50%; background:var(--line); display:block; }
+  .term .bar span { margin-left:12px; }
+  .term .body { padding:36px 40px; font-size:36px; line-height:1.55; }
+  .term .p::before { content:"> "; color:var(--accent); }
+  .term .sh::before { content:"$ "; color:var(--accent); }
+  .term .c { color:var(--muted); font-size:28px; margin-top:28px; }
+  .term .o { color:var(--muted); margin-bottom:8px; }
+  .term b { color:var(--heading); }
+  .term .g { color:var(--green); }
+  .term .m { color:var(--muted); }
+
+  /* scene 4 */
+  .rows { margin-top:44px; display:flex; flex-direction:column; gap:30px; }
+  .row { display:grid; grid-template-columns:560px 1fr 360px 130px; align-items:center; gap:32px; font-size:34px; }
+  .row .lbl { color:var(--heading); }
+  .row .track { height:28px; background:rgba(216,222,233,.10); border-radius:4px; position:relative; }
+  .row .track span { position:absolute; left:0; top:0; bottom:0; background:var(--accent); border-radius:4px; min-width:8px; }
+  .row .val { color:var(--muted); text-align:right; font-size:30px; }
+  .row .pct { color:var(--green); font-weight:700; text-align:right; font-size:42px; }
+  .note { margin-top:40px; font-size:26px; color:var(--muted); }
+
+  /* scene 5 */
+  .checks { margin-top:56px; display:flex; flex-direction:column; gap:36px; font-size:46px; color:var(--heading); }
+  .checks div::before { content:"✓  "; color:var(--green); }
+
+  /* scene 7 */
+  .url { font-size:56px; color:var(--accent); margin-top:56px; }
+  .lic { font-size:34px; color:var(--muted); margin-top:20px; }
+</style>
+</head>
+<body>
+<div class="brand"><b>■</b> tokensaver</div>
+
+<section class="scene" id="s1">
+  <div class="pixel" style="font-size:150px">tokensaver</div>
+  <div class="tagline" data-from="2">Fewer tokens, every page.</div>
+</section>
+
+<section class="scene" id="s2">
+  <h2 data-from="1">Your agent reads<br>the raw page.</h2>
+  <div class="stat" data-from="2"><span class="num">183,202</span><span class="unit">tokens</span></div>
+  <div class="sub" data-from="2">one Wikipedia article — markup, nav, scripts, citations, footers…</div>
+</section>
+
+<section class="scene" id="s3">
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>your agent + tokensaver</span></div>
+    <div class="body">
+      <div class="p" data-from="1"><b>read https://en.wikipedia.org/wiki/Go_(programming_language) with tokensaver</b></div>
+      <div class="o" data-from="2">→ <b>19,383 tokens</b> <span class="m">(raw page: 183,202)</span> · <span class="g">89% smaller</span></div>
+      <div class="p" data-from="3" style="margin-top:44px"><b>just the outline</b></div>
+      <div class="o" data-from="3">→ <b>248 tokens</b> · <span class="g">99.9% smaller</span> <span class="m">— then read only the section you need</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s4">
+  <h2>Measured on real sources</h2>
+  <div class="rows">
+    <div class="row" data-from="1"><span class="lbl">Wikipedia article</span><span class="track"><span style="width:10.6%"></span></span><span class="val">183,202 → 19,383</span><span class="pct">89%</span></div>
+    <div class="row" data-from="1"><span class="lbl">…just its outline</span><span class="track"><span style="width:0.14%"></span></span><span class="val">→ 248</span><span class="pct">99.9%</span></div>
+    <div class="row" data-from="2"><span class="lbl">GitHub repo page</span><span class="track"><span style="width:1.6%"></span></span><span class="val">87,100 → 1,433</span><span class="pct">98%</span></div>
+    <div class="row" data-from="2"><span class="lbl">GitHub API, 50 repos</span><span class="track"><span style="width:0.5%"></span></span><span class="val">78,745 → 379</span><span class="pct">99.5%</span></div>
+    <div class="row" data-from="3"><span class="lbl">Log file, 2 incidents</span><span class="track"><span style="width:2.5%"></span></span><span class="val">5,315 → 135</span><span class="pct">97.5%</span></div>
+  </div>
+  <div class="note">bar = what's left of the raw tokens · tokens ≈ characters ÷ 4</div>
+</section>
+
+<section class="scene" id="s5">
+  <h2>Local. Private. Simple.</h2>
+  <div class="checks">
+    <div data-from="1">One Go binary</div>
+    <div data-from="1">No API keys — it never calls an LLM</div>
+    <div data-from="2">Nothing leaves your machine except the URLs you ask for</div>
+    <div data-from="2">PDF engine built in — no system dependencies</div>
+  </div>
+</section>
+
+<section class="scene" id="s6">
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>terminal</span></div>
+    <div class="body">
+      <div class="m" data-from="1" style="font-size:28px"># macOS &amp; Linux</div>
+      <div class="sh" data-from="1"><b>brew tap use-tokensaver/tokensaver &amp;&amp; brew install tokensaver</b></div>
+      <div class="m" data-from="1" style="font-size:28px;margin-top:22px"># or Docker</div>
+      <div class="sh" data-from="1"><b>docker run -i --rm ghcr.io/use-tokensaver/tokensaver</b></div>
+      <div class="m" data-from="2" style="font-size:28px;margin-top:22px"># connect it to Claude Code</div>
+      <div class="sh" data-from="2"><b>claude mcp add --scope user tokensaver -- tokensaver</b></div>
+      <div class="m" data-from="3" style="font-size:28px;margin-top:22px"># then just ask</div>
+      <div class="p" data-from="3"><b>read https://go.dev/doc/effective_go with tokensaver</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s7">
+  <div class="pixel" style="font-size:96px">tokensaver</div>
+  <div class="url">github.com/use-tokensaver/tokensaver</div>
+  <div class="lic">Open source · MIT</div>
+</section>
+
+<div class="caption" id="caption"></div>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const scene = q.get("scene") || "1", step = parseInt(q.get("step") || "99", 10);
+  document.getElementById("s" + scene).classList.add("on");
+  document.querySelectorAll("#s" + scene + " [data-from]").forEach(el => {
+    if (step >= parseInt(el.dataset.from, 10)) el.classList.add("show");
+  });
+  document.getElementById("caption").textContent = q.get("caption") || "";
+</script>
+</body>
+</html>

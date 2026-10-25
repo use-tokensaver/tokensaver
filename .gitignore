@@ -17,3 +17,6 @@ coverage.*
 
 # A/B harness output (reports, transcripts, cached downloads)
 /ab-results/
+
+# Intro video render output (see video/build.py)
+/video/out/

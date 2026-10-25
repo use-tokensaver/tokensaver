@@ -1,0 +1,19 @@
+TITLE
+tokensaver: fewer tokens for your coding agent (local MCP server)
+
+DESCRIPTION
+tokensaver is a local MCP server that turns web pages, PDFs, Office files, JSON, logs and more into compact text for your coding agent — so it spends its context on content, not markup.
+
+Measured on real sources: a Wikipedia article 183,202 → 19,383 tokens (89%), its outline just 248 tokens (99.9%), a GitHub API response 99.5% smaller, a log file 97.5% smaller. Reproduce it yourself: go test ./e2e/ -v
+
+Install
+  brew tap use-tokensaver/tokensaver && brew install tokensaver
+  docker run -i --rm ghcr.io/use-tokensaver/tokensaver
+  claude mcp add --scope user tokensaver -- tokensaver
+
+GitHub: https://github.com/use-tokensaver/tokensaver
+Docs: https://use-tokensaver.github.io/tokensaver/
+License: MIT
+
+TAGS
+tokensaver, MCP, Model Context Protocol, MCP server, Claude Code, Claude Desktop, Cursor, AI coding agent, LLM tokens, context window, reduce tokens, Go, open source

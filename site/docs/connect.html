@@ -66,6 +66,25 @@
 }</pre>
     <p>If the client can't find it, use the absolute path, e.g. <code>"command": "/Users/you/go/bin/tokensaver"</code>.</p>
 
+    <h2 id="docker">Docker</h2>
+    <p>No binary on your machine? Run the image instead. <code>-i</code> is required — the server talks to your agent over stdin/stdout.</p>
+    <div class="term-window">
+      <div class="term-titlebar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span></div>
+      <div class="term-body">
+        <div class="prompt">claude mcp add --scope user tokensaver -- docker run -i --rm ghcr.io/use-tokensaver/tokensaver</div>
+      </div>
+    </div>
+    <p>Other MCP clients:</p>
+    <pre>{
+  "mcpServers": {
+    "tokensaver": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "ghcr.io/use-tokensaver/tokensaver"]
+    }
+  }
+}</pre>
+    <p>A container only sees what you give it. To read local files, mount a folder read-only (<code>"-v", "/Users/you/docs:/docs:ro"</code> before the image name) and ask for <code>/docs/…</code> paths. A dev server on your machine is <code>host.docker.internal:3000</code>, not <code>localhost:3000</code>.</p>
+
     <p>Next: the tool references — <a href="read.html">read</a> and <a href="read-json.html">read_json</a>.</p>
   </main>
 </div>

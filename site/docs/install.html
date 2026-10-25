@@ -62,6 +62,15 @@
     <h2>Windows, or without Homebrew</h2>
     <p>Download an archive from <a href="https://github.com/use-tokensaver/tokensaver/releases">Releases</a> (<code>.zip</code> on Windows, <code>.tar.gz</code> elsewhere) and put the <code>tokensaver</code> binary on your <code>PATH</code>.</p>
 
+    <h2>Docker</h2>
+    <div class="term-window">
+      <div class="term-titlebar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span></div>
+      <div class="term-body">
+        <div class="prompt">docker pull ghcr.io/use-tokensaver/tokensaver</div>
+      </div>
+    </div>
+    <p>A ~35 MB multi-arch image (<code>linux/amd64</code> and <code>linux/arm64</code>), tagged <code>latest</code> and with each release version (e.g. <code>0.4.0</code>). The image has no Chrome, so JavaScript-only pages are not rendered, and it only sees files you mount into it. <a href="connect.html#docker">Connect it with Docker</a>.</p>
+
     <h2>Optional: Chrome</h2>
     <p>Chrome, Chromium, Brave or Edge installed in the usual place (or <code>TOKENSAVER_CHROME=/path/to/chrome</code>) lets tokensaver render JavaScript-only pages.</p>
 

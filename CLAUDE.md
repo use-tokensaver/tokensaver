@@ -53,7 +53,9 @@ Commit subjects follow [Conventional Commits](https://www.conventionalcommits.or
 
 Merging a PR into `main` runs `.github/workflows/release.yml`, which asks
 [`svu`](https://github.com/caarlos0/svu) for the next version, tags it, and has
-GoReleaser publish the binaries and update the Homebrew tap. A merge with no
+GoReleaser publish the binaries and update the Homebrew tap. A second job in the
+same workflow builds the `Dockerfile` for linux/amd64 + arm64 and pushes it to
+`ghcr.io/use-tokensaver/tokensaver` (`:<version>` and `:latest`). A merge with no
 `feat:`/`fix:` in it cuts no release, by design. Pushing a `v*` tag by hand still
 works as an escape hatch.
 
@@ -70,6 +72,8 @@ works as an escape hatch.
 - `internal/jsonshrink` — ordered JSON tree, select language, shrink, table, shape
 - `internal/view` — outline, section, paging
 - `internal/testdoc` — PDF/DOCX/PPTX/XLSX builders and larger documents with known facts
+- `Dockerfile` — distroless image, cross-compiled (pure Go); CI builds it on every PR
+- `video/` — source for the intro video (`python3 video/build.py`; output is gitignored)
 
 ## Commands
 
