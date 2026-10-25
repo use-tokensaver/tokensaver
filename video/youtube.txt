@@ -17,6 +17,3 @@ License: MIT
 
 TAGS
 tokensaver, MCP, Model Context Protocol, MCP server, Claude Code, Claude Desktop, Cursor, AI coding agent, LLM tokens, context window, reduce tokens, Go, open source
-
-README (after uploading, replace VIDEO_ID with the id from the YouTube URL)
-[![tokensaver intro video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://youtu.be/VIDEO_ID)

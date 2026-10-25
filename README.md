@@ -14,6 +14,10 @@ files and JSON into compact text for your coding agent.
 A 183,000-token Wikipedia article becomes 19,000 — or a 250-token outline, so the
 agent reads only the section it needs.
 
+[![tokensaver in 10 seconds — click to watch on YouTube](site/assets/intro.gif)](https://youtu.be/37YNdjhNQCg)
+
+*[Watch the 10-second intro on YouTube](https://youtu.be/37YNdjhNQCg)*
+
 - **Local.** One Go binary. No API keys, never calls an LLM, no telemetry unless you opt in.
 - **Nothing else to install.** PDF support is built in. Chrome is optional (for pages that need JavaScript).
 
