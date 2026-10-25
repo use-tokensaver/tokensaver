@@ -50,13 +50,13 @@ brews:
     ids: [tokensaver]
     directory: Formula
     repository:
-      owner: use-tokesaver
+      owner: use-tokensaver
       name: homebrew-tokensaver
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     commit_author:
       name: tokensaver release bot
       email: mehranbehnam77@gmail.com
-    homepage: https://github.com/use-tokesaver/tokensaver
+    homepage: https://github.com/use-tokensaver/tokensaver
     description: Local MCP server that turns web pages, PDFs, Office files and JSON into compact, LLM-ready text
     license: MIT
     install: |

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/use-tokesaver/tokensaver/internal/testdoc"
+	"github.com/use-tokensaver/tokensaver/internal/testdoc"
 )
 
 // A task is one question about one source, asked in both arms. Answers are

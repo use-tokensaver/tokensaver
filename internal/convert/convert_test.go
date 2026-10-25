@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/use-tokesaver/tokensaver/internal/browser"
-	"github.com/use-tokesaver/tokensaver/internal/source"
-	"github.com/use-tokesaver/tokensaver/internal/testdoc"
+	"github.com/use-tokensaver/tokensaver/internal/browser"
+	"github.com/use-tokensaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/testdoc"
 )
 
 func mustContain(t *testing.T, got string, wants ...string) {

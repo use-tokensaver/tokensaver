@@ -14,7 +14,7 @@ import (
 	"github.com/klippa-app/go-pdfium/requests"
 	"github.com/klippa-app/go-pdfium/webassembly"
 
-	"github.com/use-tokesaver/tokensaver/internal/source"
+	"github.com/use-tokensaver/tokensaver/internal/source"
 )
 
 // PDFium (Chrome's PDF engine) runs as WebAssembly inside the Go process, so PDF

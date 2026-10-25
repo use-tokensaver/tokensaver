@@ -20,7 +20,7 @@ import (
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 
-	"github.com/use-tokesaver/tokensaver/internal/server"
+	"github.com/use-tokensaver/tokensaver/internal/server"
 )
 
 func main() {
