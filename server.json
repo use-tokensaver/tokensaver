@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.use-tokensaver/tokensaver",
+  "title": "tokensaver",
+  "description": "Turns web pages, PDFs, Office files and JSON into compact text for LLMs. Local, no API keys.",
+  "repository": {
+    "url": "https://github.com/use-tokensaver/tokensaver",
+    "source": "github"
+  },
+  "websiteUrl": "https://use-tokensaver.github.io/tokensaver/",
+  "version": "0.4.0",
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/use-tokensaver/tokensaver:0.4.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

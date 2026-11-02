@@ -16,6 +16,7 @@ RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
 FROM gcr.io/distroless/static-debian12:nonroot
 LABEL org.opencontainers.image.source="https://github.com/use-tokensaver/tokensaver" \
       org.opencontainers.image.description="Local MCP server that turns web pages, PDFs, Office files and JSON into compact, LLM-ready text" \
-      org.opencontainers.image.licenses="MIT"
+      org.opencontainers.image.licenses="MIT" \
+      io.modelcontextprotocol.server.name="io.github.use-tokensaver/tokensaver"
 COPY --from=build /out/tokensaver /usr/local/bin/tokensaver
 ENTRYPOINT ["/usr/local/bin/tokensaver"]
